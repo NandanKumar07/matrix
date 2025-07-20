@@ -23,7 +23,7 @@ const About = () => {
 
               <div className="space-y-4 leading-relaxed text-green-400/95">
                 <div>&gt; Full Stack Developer with expertise in React.js, Node.js, and modern web technologies</div>
-                <div>&gt; Currently pursuing B.Tech from University Institute of Engineering and Technology, MDU Rohtak (2025)</div>
+                <div>&gt; Completed my B.Tech from the University Institute of Engineering and Technology, MDU Rohtak in 2025.</div>
                 <div>&gt; Passionate about Machine Learning, Web Development, and Competitive Programming</div>
                 <div>&gt; Experience as Full Stack Intern at Carer Healthcare, working on production-ready features</div>
                 <div>&gt; Strong problem-solving skills with 700+ LeetCode problems solved</div>

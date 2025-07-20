@@ -143,11 +143,11 @@ body {
   font-family: "JetBrains Mono", monospace;
 }
 
-/* Matrix-style buttons */
+/* Base Matrix-style Button */
 .matrix-btn {
   background: transparent;
-  border: 2px solid #00ff00;
-  color: #00ff00;
+  border: 2px solid var(--matrix-color);
+  color: var(--matrix-color);
   padding: 12px 24px;
   font-family: "JetBrains Mono", monospace;
   font-weight: 500;
@@ -159,8 +159,8 @@ body {
 }
 
 .matrix-btn:hover {
-  background: rgba(0, 255, 0, 0.1);
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+  background: color-mix(in srgb, var(--matrix-color) 10%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--matrix-color) 50%, transparent);
   transform: translateY(-2px);
 }
 
@@ -175,7 +175,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--matrix-color) 20%, transparent), transparent);
   transition: left 0.5s;
 }
 
@@ -183,23 +183,20 @@ body {
   left: 100%;
 }
 
-.matrix-btn-secondary {
-  background: transparent;
-  border: 2px solid rgba(0, 255, 0, 0.5);
-  color: rgba(0, 255, 0, 0.8);
-  padding: 12px 24px;
-  font-family: "JetBrains Mono", monospace;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
+/* Red and Blue Themes */
+.matrix-btn-red {
+  --matrix-color: #ff3c3c;
 }
 
-.matrix-btn-secondary:hover {
-  border-color: #00ff00;
-  color: #00ff00;
-  background: rgba(0, 255, 0, 0.05);
+.matrix-btn-blue {
+  --matrix-color: #00bfff; 
 }
+
+/* Default Green */
+.matrix-btn-green {
+  --matrix-color: #00ff00;
+}
+
 
 /* Scanline effect */
 .scanlines {

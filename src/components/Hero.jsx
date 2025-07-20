@@ -49,10 +49,10 @@ const Hero = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button className="matrix-btn">
+                    <button className="matrix-btn matrix-btn-red">
                         <span>{"> ENTER THE MATRIX"}</span>
                     </button>
-                    <button className="matrix-btn-secondary">
+                    <button className="matrix-btn matrix-btn-blue">
                         <span>{"> VIEW PROJECTS"}</span>
                     </button>
                 </div>

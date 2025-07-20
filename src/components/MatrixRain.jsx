@@ -13,7 +13,7 @@ const MatrixRain = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const matrix = "アカサタナハマヤラワABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}".split("");
+        const matrix = "アカサタナハマヤラワC/C++NextJavascriptPythonPhpLaravelReactNodeTailwindCSSHTMLScikit-LearnNumpyPandasMatplotlibMongoDBMySQLGIT/GithubPostMan}".split("");
         const font_size = 10;
         const columns = canvas.width/font_size;
         const drops = [];
