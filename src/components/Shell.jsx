@@ -122,6 +122,7 @@ const Shell = () => {
                   <p className="pl-2">- echo [text]: Display text</p>
                   <p className="pl-2">- matrix: Enter the Matrix</p>
                   <p className="pl-2">- show matrix-rain: Show background Matrix Rain</p>
+                  <p className="pl-2">- hide matrix-rain: Hide background Matrix Rain</p>
                 </div>
               )}
               {item.command === "matrix" && (
