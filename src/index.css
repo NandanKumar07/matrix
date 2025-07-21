@@ -244,6 +244,11 @@ button:focus {
   outline-offset: 2px;
 }
 
+input.terminal-input:focus {
+  outline: none;
+}
+
+
 /* Loading animation */
 @keyframes loading {
   0% {

@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Hero = () => {
     const [text, setText] = useState("")
     const [showCursor, setShowCursor] = useState(true)
+    const navigate = useNavigate()
     const fullText = "WELCOME TO THE MATRIX..."
 
     useEffect(() => {
@@ -25,6 +27,17 @@ const Hero = () => {
             clearInterval(cursorTimer)
         }
     }, [])
+
+    const handleEnterMatrix = () => {
+        navigate('/shell')
+    }
+
+    const handleViewProjects = () => {
+        const element = document.getElementById('projects')
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+        }
+    }
 
     return (
         <section id="home" className="min-h-screen flex items-center justify-center relative">
@@ -49,10 +62,10 @@ const Hero = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button className="matrix-btn matrix-btn-red">
+                    <button onClick={handleEnterMatrix} className="matrix-btn matrix-btn-red">
                         <span>{"> ENTER THE MATRIX"}</span>
                     </button>
-                    <button className="matrix-btn matrix-btn-blue">
+                    <button onClick={handleViewProjects} className="matrix-btn matrix-btn-blue">
                         <span>{"> VIEW PROJECTS"}</span>
                     </button>
                 </div>
