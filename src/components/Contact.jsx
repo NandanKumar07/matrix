@@ -72,16 +72,16 @@ export default function Contact() {
                   <div className="flex items-center space-x-3">
                     <span className="text-green-400">{">"}</span>
                     <span className="text-green-400/80">GITHUB:</span>
-                    <a href="#" className="text-green-300 hover:text-green-200 transition-colors">
-                      github.com/nandan
+                    <a href="https://www.github.com/NandanKumar07" className="text-green-300 hover:text-green-200 transition-colors">
+                      NandanKumar07
                     </a>
                   </div>
 
                   <div className="flex items-center space-x-3">
                     <span className="text-green-400">{">"}</span>
                     <span className="text-green-400/80">LINKEDIN:</span>
-                    <a href="#" className="text-green-300 hover:text-green-200 transition-colors">
-                      linkedin.com/in/nandan
+                    <a href="https://www.linkedin.com/in/nandan-kumar-787944229/" className="text-green-300 hover:text-green-200 transition-colors">
+                      Nandan Kumar
                     </a>
                   </div>
                 </div>
