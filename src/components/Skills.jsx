@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "../skills-animations.css";
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState(0)
