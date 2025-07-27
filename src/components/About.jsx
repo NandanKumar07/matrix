@@ -18,7 +18,7 @@ const About = () => {
             <div>
               <div className="mb-6">
                 <span className="text-green-300">nandan@matrix:~$ </span>
-                <span className="text-green-400">who-am-i</span>
+                <span className="text-green-400">whoami</span>
               </div>
 
               <div className="space-y-4 leading-relaxed text-green-400/95">

@@ -27,12 +27,12 @@ export default function Experience() {
                 <div className="absolute -left-6 top-1 w-4 h-4 bg-green-400 rounded-full animate-pulse"></div>
 
                 {/* Text content */}
-                <div className="space-y-2">
+                <div>
                   <div className="text-green-300 font-bold text-lg">{"> FULL STACK INTERN (REMOTE)"}</div>
                   <div className="text-green-400/80">
                     Carer Healthcare, Gurugram | Apr 2025 - June 2025
                   </div>
-                  <div className="mt-2 space-y-2 text-green-400/90 leading-relaxed">
+                  <div className="!mt-3 text-green-400/90">
                     <div>• Worked primarily on frontend using React.js, focusing on UI development and API integration</div>
                     <div>• Collaborated with backend developers to connect and test REST APIs for smooth functionality</div>
                     <div>• Used GitHub for version control while contributing to production-ready features in agile, remote team</div>
@@ -46,9 +46,9 @@ export default function Experience() {
                 <div className="absolute -left-6 top-1 w-4 h-4 bg-green-400/60 rounded-full"></div>
 
                 {/* Text content */}
-                <div className="space-y-2">
+                <div className="!mt-10">
                   <div className="text-green-300 font-bold text-lg">{"> TRAINING & CERTIFICATIONS"}</div>
-                  <div className="mt-2 space-y-2 text-green-400/90 leading-relaxed">
+                  <div className="!mt-3 space-y-2 text-green-400/90 leading-relaxed">
                     <div>• Machine Learning Specialization by Andrew Ng on Coursera</div>
                     <div>• Exploratory Data Analysis & Data Visualization by Srikanth Verma on Scaler Topics</div>
                   </div>

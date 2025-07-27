@@ -39,7 +39,7 @@ const Achievements = () => {
               <span className="text-green-400">python parse_achievements.py</span>
             </div>
 
-            <div className="space-y-8">
+            <div className="!mt-2 !space-y-8">
               <div className="text-green-400/80 mb-12 text-lg">
                 {"> PARSING COMPETITIVE PROGRAMMING ACHIEVEMENTS..."}
               </div>
@@ -60,7 +60,7 @@ const Achievements = () => {
                 ))}
               </div>
 
-              <div className="space-y-6 text-green-400/80 mb-12">
+              <div className="!space-y-2 text-green-400/80 mb-12">
                 <div className="text-lg font-semibold mb-6">{"> COMPETITIVE PROGRAMMING STATISTICS:"}</div>
                 <div className="space-y-3 ml-4">
                   <div>{"  • Total Problems Solved: 850+"}</div>
@@ -71,7 +71,7 @@ const Achievements = () => {
               </div>
             </div>
 
-            <div className="mt-12 pt-6 border-t border-green-400/20 text-green-400/70 text-center">
+            <div className="!mt-12 border-t border-green-400/20 text-green-400/70 text-center">
               {"> PARSING COMPLETE. ALL ACHIEVEMENTS VERIFIED."}
             </div>
           </div>

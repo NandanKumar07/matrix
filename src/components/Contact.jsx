@@ -1,34 +1,54 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  const EMAIL_SERVICE_ID = import.meta.env.VITE_EMAIL_SERVICE_ID;
+  const EMAIL_TEMPLATE_ID = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
+  const EMAIL_API_KEY = import.meta.env.VITE_EMAIL_API_KEY;
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      await emailjs.send(
+        EMAIL_SERVICE_ID,
+        EMAIL_TEMPLATE_ID,
+        {
+          name: formData.name || "No Name",
+          email: formData.email || "No Email",
+          message: formData.message || "No Message",
+        },
+        EMAIL_API_KEY
+      );
 
-    setIsSubmitting(false);
-    setFormData({ name: "", email: "", message: "" });
-    alert("Message sent successfully!");
-  };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+      setFormData({ name: "", email: "", message: "" });
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 1000);
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      alert("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section id="contact" className="py-20 px-4 flex flex-col justify-center items-center gap-10">
+    <section id="contact" className="py-20 px-4 flex flex-col justify-center items-center gap-10 relative">
+      {showToast && (
+        <div className="absolute top-4 px-6 py-2 border border-green-400 bg-black text-green-400 text-sm rounded glitch-text z-50" data-text="> MESSAGE SENT SUCCESSFULLY">
+          {"> MESSAGE SENT SUCCESSFULLY"}
+        </div>
+      )}
+
       <div className="w-full max-w-6xl mx-auto">
         <div className="terminal-window">
           <div className="terminal-header">
@@ -48,8 +68,8 @@ export default function Contact() {
 
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-green-300 text-xl font-bold mb-6">{"> CONTACT INFORMATION"}</h3>
-                <div className="space-y-4">
+                <h3 className="text-green-300 text-xl font-bold !mb-4">{"> CONTACT INFORMATION"}</h3>
+                <div className="!space-y-2">
                   <div className="flex items-center space-x-3">
                     <span className="text-green-400">{">"}</span>
                     <span className="text-green-400/80">EMAIL:</span>
@@ -64,8 +84,8 @@ export default function Contact() {
                   <div className="flex items-center space-x-3">
                     <span className="text-green-400">{">"}</span>
                     <span className="text-green-400/80">MEDIUM:</span>
-                    <a href="#" className="text-green-300 hover:text-green-200 transition-colors">
-                      medium.com/in/nandankumarmle
+                    <a href="https://medium.com/@nandankumarmle" className="text-green-300 hover:text-green-200 transition-colors">
+                      nandankumarmle
                     </a>
                   </div>
 
@@ -88,56 +108,56 @@ export default function Contact() {
               </div>
 
               <div>
-                <h3 className="text-green-300 text-xl font-bold mb-6">{"> SEND MESSAGE"}</h3>
+                <h3 className="text-green-300 text-xl font-bold !mb-4">{"> SEND MESSAGE"}</h3>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="!space-y-2">
                   <div>
-                    <label className="block text-green-400/80 text-sm mb-2">{"> NAME:"}</label>
+                    <label className="block text-green-400/80 text-sm !mb-2">{"> NAME:"}</label>
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full bg-black border border-green-400/30 rounded px-3 py-2 text-green-400 focus:border-green-400 focus:outline-none"
+                      className="w-full bg-black border border-green-400/30 rounded !px-3 !py-2 text-green-400 focus:border-green-400 focus:outline-none"
                       placeholder="Enter your name..."
                     />
                   </div>
 
                   <div>
-                    <label className="block text-green-400/80 text-sm mb-2">{"> EMAIL:"}</label>
+                    <label className="block text-green-400/80 text-sm !mb-2">{"> EMAIL:"}</label>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full bg-black border border-green-400/30 rounded px-3 py-2 text-green-400 focus:border-green-400 focus:outline-none"
+                      className="w-full bg-black border border-green-400/30 rounded !px-3 !py-2 text-green-400 focus:border-green-400 focus:outline-none"
                       placeholder="Enter your email..."
                     />
                   </div>
 
                   <div>
-                    <label className="block text-green-400/80 text-sm mb-2">{"> MESSAGE:"}</label>
+                    <label className="block text-green-400/80 text-sm !mb-2">{"> MESSAGE:"}</label>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       required
                       rows={4}
-                      className="w-full bg-black border border-green-400/30 rounded px-3 py-2 text-green-400 focus:border-green-400 focus:outline-none resize-none"
+                      className="w-full bg-black border border-green-400/30 rounded !px-3 !py-2 text-green-400 focus:border-green-400 focus:outline-none resize-none"
                       placeholder="Enter your message..."
                     />
                   </div>
 
-                  <button type="submit" disabled={isSubmitting} className="matrix-btn w-full">
+                  <button type="submit" disabled={isSubmitting} className="matrix-btn matrix-btn-green w-full">
                     {isSubmitting ? <span>{"> TRANSMITTING..."}</span> : <span>{"> SEND MESSAGE"}</span>}
                   </button>
                 </form>
               </div>
             </div>
 
-            <div className="mt-12 text-center text-green-400/70">
+            <div className="text-center text-green-400/70 mt-4">
               {"> CONNECTION ESTABLISHED. READY TO RECEIVE TRANSMISSION."}
             </div>
           </div>

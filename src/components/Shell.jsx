@@ -19,17 +19,32 @@ const Shell = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (input.trim()) {
-      const newCommand = { prompt, command: input }
+      const trimmed = input.trim()
+      const newCommand = { prompt, command: trimmed, isError: false }
 
-      if (input.trim() === "clear") {
+      const validCommands = [
+        "ls",
+        "clear",
+        "matrix",
+        "show matrix-rain",
+        "hide matrix-rain",
+      ]
+
+      if (trimmed === "clear") {
         setCommandHistory([])
-      } else if (input.trim() === "show matrix-rain") {
+      } else if (trimmed === "show matrix-rain") {
         setShowMatrixRain(true)
         setCommandHistory([...commandHistory, newCommand])
-      } else if(input.trim() === 'hide matrix-rain') {
-        setShowMatrixRain(false);
-        setCommandHistory([...commandHistory, newCommand]);
+      } else if (trimmed === "hide matrix-rain") {
+        setShowMatrixRain(false)
+        setCommandHistory([...commandHistory, newCommand])
+      } else if (
+        trimmed.startsWith("cout ") ||
+        validCommands.includes(trimmed)
+      ) {
+        setCommandHistory([...commandHistory, newCommand])
       } else {
+        newCommand.isError = true
         setCommandHistory([...commandHistory, newCommand])
       }
 
@@ -85,9 +100,9 @@ const Shell = () => {
   }, [])
 
   return (
-    <div className={`flex justify-center items-center !mt-25 w-full text-green-400 font-mono overflow-hidden`}>
+    <div className={`flex justify-center items-center !mt-25 !mb-7 w-full text-green-400 font-mono overflow-hidden`}>
       <div
-        className={`z-10 w-full md:w-4/5 lg:w-3/4 xl:w-2/3 ${showMatrixRain ? 'backdrop-blur-none' : 'backdrop-blur-xs'} mx-auto h-screen md:h-[80vh] mt-0 md:mt-[10vh] bg-opacity-100 border border-green-500/30 rounded-none md:rounded-md shadow-lg shadow-green-500/20 flex flex-col`}
+        className={`z-10 w-full md:w-4/5 lg:w-3/4 xl:w-2/3 ${showMatrixRain ? 'backdrop-blur-none' : 'backdrop-blur-xs'} mx-auto h-screen md:h-[80vh] mt-0 md:mt-[10vh] bg-opacity-100 border border-green-500/30 rounded-none md:rounded-md shadow-2xl shadow-green-500/20 flex flex-col`}
       >
         <div className="flex flex-row bg-[#111827] gap-3 border-b border-green-500/30 items-center">
           <div className="flex flex-row gap-1 space-x-2 mr-4">
@@ -95,7 +110,7 @@ const Shell = () => {
             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
           </div>
-          <div className="text-green-400 text-sm font-semibold">MATRIX-TERMINAL</div>
+          <div className="text-green-400 text-sm font-semibold">MATRIX-CLI</div>
         </div>
 
         <div
@@ -105,7 +120,7 @@ const Shell = () => {
         >
           <div className="mb-4">
             <p className="text-green-300">Welcome to the Matrix Terminal (v1.0.0)</p>
-            <p className="text-green-400/70 mt-1">Type 'help' for available commands</p>
+            <p className="text-green-400/70 mt-1">Type 'ls' for available commands</p>
           </div>
 
           {commandHistory.map((item, index) => (
@@ -114,25 +129,38 @@ const Shell = () => {
                 <span className="text-green-300">{item.prompt}</span>
                 <span className="text-green-400 ml-1">{item.command}</span>
               </div>
-              {item.command === "help" && (
+
+              {/* Handle known commands */}
+              {item.command === "ls" && (
                 <div className="pl-4 mt-1 text-green-400/80">
                   <p>Available commands:</p>
-                  <p className="pl-2">- help: Display this help message</p>
+                  <p className="pl-2">- ls: Display available commands</p>
                   <p className="pl-2">- clear: Clear the terminal</p>
-                  <p className="pl-2">- echo [text]: Display text</p>
+                  <p className="pl-2">- cout [text]: Display text</p>
                   <p className="pl-2">- matrix: Enter the Matrix</p>
                   <p className="pl-2">- show matrix-rain: Show background Matrix Rain</p>
                   <p className="pl-2">- hide matrix-rain: Hide background Matrix Rain</p>
                 </div>
               )}
+
               {item.command === "matrix" && (
                 <div className="pl-4 mt-1 text-green-400/80 animate-pulse">
                   <p>Entering the Matrix...</p>
-                  <p>Follow the white rabbit.</p>
+                  <p className="text-white">Follow the white rabbit.</p>
                 </div>
               )}
-              {item.command.startsWith("echo ") && (
-                <div className="pl-4 mt-1 text-green-400/80">{item.command.substring(5)}</div>
+
+              {item.command.startsWith("cout ") && (
+                <div className="pl-4 mt-1 text-green-400/80">
+                  {item.command.substring(5)}
+                </div>
+              )}
+
+              {/* Unknown command handler */}
+              {item.isError && (
+                <div className="pl-4 mt-1 text-red-500">
+                  Command not found: <span className="font-mono">{item.command}</span>
+                </div>
               )}
             </div>
           ))}
@@ -146,7 +174,7 @@ const Shell = () => {
                 value={input}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
-                className="w-full terminal-input !border-none bg-transparent text-green-400 outline-none !pl-1"
+                className="w-full terminal-input !border-none bg-transparent text-green-400 !outline-none !pl-1"
                 autoComplete="off"
                 spellCheck="false"
               />

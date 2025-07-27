@@ -1,9 +1,8 @@
-import React from "react"
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
 
 const ProjectCard = ({ project }) => {
     return (
-        <div className="flex flex-col border border-green-400/30 rounded-lg p-4 bg-green-400/5 hover:bg-green-400/10 transition-all duration-300 transform hover:scale-[1.03] shadow-md">
+        <div className="flex flex-col border border-green-400/30 rounded-lg !p-4 bg-green-400/5 hover:bg-green-400/10 transition-all duration-300 transform hover:scale-[1.03] shadow-md">
 
             {/* Image */}
             <div className="w-full h-48 overflow-hidden rounded-md border border-green-400/20 mb-4">

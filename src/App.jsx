@@ -12,6 +12,7 @@ import Projects from "./components/Projects";
 import Achievements from "./components/Achievements";
 import Contact from "./components/Contact";
 import Shell from "./components/Shell";
+import Footer from "./components/Footer";
 
 function HomePage() {
   return (
@@ -23,14 +24,16 @@ function HomePage() {
       <section id="projects"><Projects /></section>
       <section id="achievements"><Achievements /></section>
       <section id="contact"><Contact /></section>
+      <section id="footer"><Footer/></section>
     </>
   );
 }
 
 function ShellPage() {
   return (
-    <div className="min-h-screen pt-16"> {/* pt-16 to account for fixed navigation */}
+    <div className="min-h-screen pt-16"> 
       <Shell />
+      <Footer />
     </div>
   );
 }

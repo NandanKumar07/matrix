@@ -304,3 +304,14 @@ html {
   scroll-behavior: smooth;
 }
 
+footer p {
+  letter-spacing: 0.05em;
+}
+
+footer span {
+  transition: color 0.3s ease;
+}
+
+footer span:hover {
+  color: #00cc00;
+}
