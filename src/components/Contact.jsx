@@ -157,7 +157,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="text-center text-green-400/70 mt-4">
+            <div className="text-center text-green-400/70 !mt-4">
               {"> CONNECTION ESTABLISHED. READY TO RECEIVE TRANSMISSION."}
             </div>
           </div>
