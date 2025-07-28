@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { IoCodeDownload } from "react-icons/io5";
 
 const Hero = () => {
     const [text, setText] = useState("")
@@ -39,6 +40,16 @@ const Hero = () => {
         }
     }
 
+    const handleDownload = () => {
+        const pdfUrl = '/Nandan_Kumar_Resume.pdf';
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = 'Nandan-Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <section id="home" className="min-h-screen flex items-center justify-center relative">
             <div className="flex flex-col gap-10 text-center z-10 max-w-4xl mx-auto px-4">
@@ -69,6 +80,14 @@ const Hero = () => {
                         <span>{"> VIEW PROJECTS"}</span>
                     </button>
                 </div>
+                <div className='flex justify-center items-center'>
+                    <button onClick={handleDownload} className="flex items-center justify-center matrix-btn matrix-btn-green !w-70 gap-2">
+                        <IoCodeDownload className="w-6 h-6" />
+                        <span>{"> DOWNLOAD RESUME"}</span>
+                    </button>
+                </div>
+
+
 
                 <div className="mt-16 text-green-400/60 text-sm animate-bounce">{"> SCROLL TO CONTINUE"}</div>
             </div>
